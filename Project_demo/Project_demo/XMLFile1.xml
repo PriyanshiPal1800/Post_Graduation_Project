@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Advertisements>
+	<Ad>
+		<ImageUrl>https://99designs-blog.imgix.net/blog/wp-content/uploads/2021/04/barilla_new-year-e1596724488402.jpg</ImageUrl>
+		<Width>142px</Width>
+		<NavigateUrl>http://www.1800flowers.com</NavigateUrl>
+		<AlternateText>    Order flowers, roses, gifts and more</AlternateText>
+		<Impressions>25</Impressions>
+
+	</Ad>
+
+	<Ad>
+		<ImageUrl>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu1fTNGGTyrQ5lUA0mnv-QwQQu2kItSGBMcg</ImageUrl>
+		<Width>142px</Width>
+		<NavigateUrl>http://www.babybouquets.com.au</NavigateUrl>
+		<AlternateText>Order roses and flowers</AlternateText>
+		<Impressions>25</Impressions>
+
+	</Ad>
+
+	<Ad>
+		<ImageUrl>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRphvq4k_Wgss73kxois3FGNVKAc4rhp26zfQ</ImageUrl>
+		<Width>142px</Width>
+		<NavigateUrl>http://www.flowers2moscow.com</NavigateUrl>
+		<AlternateText>Send flowers to Russia</AlternateText>
+		<Impressions>25</Impressions>
+
+	</Ad>
+
+	<Ad>
+		<ImageUrl>https://static-cse.canva.com/blob/571334/advertisement111.jpg</ImageUrl>
+		<Width>142px</Width>
+		<NavigateUrl>http://www.edibleblooms.com</NavigateUrl>
+		<AlternateText>Edible Blooms</AlternateText>
+		<Impressions>25</Impressions>
+
+	</Ad>
+</Advertisements>

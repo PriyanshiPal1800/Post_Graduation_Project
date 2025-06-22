@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Project_demo.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <style>        
+        .auto-style12 {
+            position: absolute;
+            left: 442px;
+            top: 15px;
+            height: 276px;
+            width: 628px;
+        }
+
+        .auto-style13 {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            width: 425px;
+            height: 275px;
+        }
+
+        .auto-style14 {
+            position: absolute;
+            left: 1074px;
+            top: 16px;
+            width: 426px;
+            height: 273px;
+        }
+        .btn
+        {
+	        cursor: pointer;
+	        border: none;
+	        width: 150px;
+	        padding:10px;
+            margin-top:20px;
+	        font-size: 18px;
+        }
+        .count
+        {
+	        width:300px;
+	        display:inline-block;
+	        background:white;
+	        border:1px solid grey;
+	        padding:10px;
+	        margin:10px;
+	        box-sizing: border-box;
+	        border-radius: 5px;
+        }
+        img
+        {
+	        float:right;
+	        width:60px;
+	        padding:10px;
+        }        
+        .placeholder{
+            height: 825px;
+            width: 1084px;
+            overflow:auto;
+        }
+        .logout
+        {
+            background-color:#FF9933  ;
+            border-block-style:groove;
+            position:absolute; 
+            top: 320px; 
+            right: 120px;
+            font-weight:200; 
+            color: #990000;
+            font-family:Times New Roman;
+            Font-Size:X-Large;
+            text-decoration:underline;
+            Height:44px;
+            Width:150px;
+            cursor:pointer;
+        }
+    </style>
+    <asp:ContentPlaceHolder id="head" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <table style="border:solid; border-color:darkorange;">
+            <tr>
+                <td colspan="2" height="278px" style="background-color:darkorange;">
+                    <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/logo2.JPG" CssClass="auto-style12" />
+                    <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/Temple1.jpg" CssClass="auto-style13" />
+                    <asp:Image ID="Image5" runat="server" ImageUrl="~/Images/Temple4.jpg" CssClass="auto-style14" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color:darkorange">
+                    <hr />
+                    <center><h1>ADMIN PANEL</h1></center>
+                    <asp:Button ID="btnLogout" runat="server" class="logout" Text="LOGOUT" OnClientClick="alert_meth()" OnClick="btnLogout_Click" />
+                </td>
+            </tr>
+            <tr style="border-color:darkorange;">
+                <td width="20%">
+                    <center>
+                        <asp:Button ID="btnDashboard" runat="server" Text="Dashboard" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px" ForeColor="White" class="btn" OnClick="btnDashboard_Click"/> 
+                        <asp:Button ID="btnUsers" runat="server" Text="Users" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px" ForeColor="White" class="btn" OnClick="btnUsers_Click"/> 
+                        <asp:Button ID="btnTemples" runat="server" Text="Temples" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px" ForeColor="White" class="btn" OnClick="btnTemples_Click"/> 
+                        <asp:Button ID="btnNgo" runat="server" Text="NGO" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px" ForeColor="White" class="btn" OnClick="btnNgo_Click"/> 
+                        <asp:Button ID="btnAarti" runat="server" Text="Aarti" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnAarti_Click"/> 
+                        <asp:Button ID="btnAartiBook" runat="server" Text="Aarti Booking" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnAartiBook_Click"/> 
+                        <asp:Button ID="btnEpass" runat="server" Text="Epass" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnEpass_Click" /> 
+                        <asp:Button ID="btnDonation" runat="server" Text="Donation" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnDonation_Click"/> 
+                        <asp:Button ID="btnQuery" runat="server" Text="Query" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnQuery_Click"/>
+                        <asp:Button ID="btnFeedback" runat="server" Text="Feedback" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnFeedback_Click"/>                     
+                        <asp:Button ID="btnCalendar" runat="server" Text="Calendar" BackColor="#a94106" BorderColor="#a94106" BorderWidth="0px"  ForeColor="White" class="btn" OnClick="btnCalendar_Click"/>                     
+                    </center>
+                </td>
+                <td width="80%">
+                    <center>
+                        <div id="placeholder" width="950px">
+                            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" />
+                        </div>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

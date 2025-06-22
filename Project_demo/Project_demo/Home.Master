@@ -1,0 +1,774 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="Project_demo.Home" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Divya Darshan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript">
+        function alert_meth() {
+            if (document.getElementById("Button7").Value == "LOGOUT")
+                alert("You have been logged out");
+        }
+
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+     
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            height: 1260px;
+            border: double;
+            border: solid;
+            border-inline-width:5px;
+        }
+
+        .auto-style2 {
+            height: 278px;
+            background-color: darkorange;
+        }
+
+        .auto-style3 {
+            height: 96px;
+            background-image: url("https://i.pinimg.com/originals/a2/3b/ec/a23bec39a9ffb0624ea75a54cd30fe02.jpg");
+           
+        }
+
+        .auto-style4 {
+            height: 825px;
+            width: 20%;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_auC5oGIVopilabs077U2fM9MbarCr9F3aQ&usqp=CAU);
+    background-size: 100% 100%
+            
+        }
+        .auto-style6 {
+            height: 58px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo0Sj_LwQplXiUyjaXzrfHDVxN6waGfoJEOWI5__Rqxe_vdVCxAeAzcbtSVQcG2ObONIQ&usqp=CAU");
+            text-align: center;
+        }
+
+        .auto-style7 {
+            height: 825px;
+            width: 10%;
+            background-color: #BEBEBE;
+        }
+
+        .auto-style8 {
+            height: 825px;
+            width: 70%;
+            
+           overflow:auto;
+           
+        
+        }
+
+        .auto-style9 {
+            height:209px;
+            background-image: url("data:image/jpeg;base64,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");
+            background-size:contain;
+        }
+
+        .auto-style10 {
+            position: absolute;
+            left: 1181px;
+            top: 111px;
+            height: 275px;
+            width: 324px;
+        }
+
+        .auto-style11 {
+            position: absolute;
+            left: 15px;
+            top: 296px;
+            height: 237px;
+            width: 276px;
+        }
+
+        .auto-style12 {
+            position: absolute;
+            left: 34%;
+            top: 15px;
+            height: 276px;
+            width: 531px;
+        }
+
+        .auto-style13 {
+            position: absolute;
+    left: 1%;
+    top: 15px;
+    width: 32.9%;
+    height: 275px;
+        }
+
+        .auto-style14 {
+           position: absolute;
+    left: 69%;
+    top: 13px;
+    width: 30%;
+    height: 278px;
+        }
+
+        .place1 {
+            position: absolute;
+            left: 900px;
+            top: 1320px;
+            width: 250px;
+            height: 70px;
+        }
+
+        .place2 {
+            position: absolute;
+            left: 900px;
+            top: 1450px;
+            width: 250px;
+            height: 70px;
+        }
+
+        .place3 {
+            position: absolute;
+            left: 1230px;
+            top: 1450px;
+            width: 250px;
+            height: 70px;
+        }
+
+        .place4 {
+            position: absolute;
+            left: 1230px;
+            top: 1320px;
+            width: 250px;
+            height: 70px;
+        }
+
+        .flip-cardH {
+            background-color: transparent;
+            height: 70px;
+            width: 200px;
+            left: 100px;
+            perspective: 1000px;
+        }
+
+        .flip-card-innerH {
+            position: relative;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: purple;
+        }
+
+        .flip-cardH:hover .flip-card-innerH {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-frontH, .flip-card-backH {
+            position: absolute;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background-color: black;
+            color: #333333;
+        }
+
+        .flip-card-frontH {
+            background-color: transparent;
+            color: black;
+        }
+
+        .flip-card-backH {
+            background-color: transparent;
+            color: #333333;
+            font-family: "lucida handwriting",cursive;
+            font-size: 9px;
+            transform: rotateY(180deg);
+        }
+
+        .chipH {
+            display: inline-flex;
+            padding: 0 25px;
+            height: 70px;
+            width: 200px;
+            font-size: 22px;
+            line-height: 40px;
+            border-radius: 25px;
+            background-color: transparent;
+            color: #333333;
+            font-family: Britannic;
+            font-weight: bold;
+        }
+
+            .chip imgH {
+                float: left;
+                margin: 0 10px 0 -25px;
+                height: 70px;
+                width: 70px;
+                border-radius: 50%;
+            }
+
+        .auto-style23 {
+            font-size: x-large;
+            width: 160px;
+            height: 30px;
+            right: 563px;
+        }
+        .auto-style24 {
+            width: 94px;
+        }
+        .navigation1
+        {
+                color: #990000;
+    background-color: transparent;
+    margin-left: 21px;
+    position: initial;
+    height: 40px;
+    width: 95px;
+     cursor:pointer;
+     font-weight:200;
+          font-family:Times New Roman;
+                Font-Size:22px;
+                border-color:transparent;
+                padding:0px 0px;
+                
+        }
+         .navigation2
+        {
+                color: #990000;
+    background-color: transparent;
+    margin-left: 21px;
+    position: initial;
+    height: 40px;
+    width: 120px;
+     cursor:pointer;
+     font-weight:200;
+          font-family:Times New Roman;
+                Font-Size:22px;
+                border-color:transparent;
+                padding:0px 0px;
+                
+        }
+        .navigation1:hover , .navigation2:hover
+        {
+            background-color:#FF9933;
+        }
+        .nav{
+               margin-left: 180px;
+    display: flex;
+        }
+        .login
+        {
+            background-color:#FF9933  ;
+                border-block-style:groove;
+                position:absolute; 
+                top: 315px; 
+                left: 1210px; 
+                font-weight:200; 
+                 color: #990000;
+                font-family:Times New Roman;
+                Font-Size:X-Large;
+               text-decoration:underline;
+                Height:44px;
+                Width:150px;
+                cursor:pointer;
+        }
+        .tbc
+        {
+            width:90%;
+        }
+        .thc{
+            padding:18px;
+            background-color:burlywood;
+        }
+        .tdc
+        {
+            width:30%;
+            text-align:center;
+            border-bottom:2px solid lightpink;
+        }  
+        .txttoday
+        {
+            padding:5px;
+            background-color:burlywood;
+            font-size:large;
+        }
+        .joinus{
+ position: absolute;
+    top: 67%;
+    left: 85%;
+        text-align: center;
+    FONT-SIZE: 33px;
+    font-style: oblique;
+    font-weight: 900;
+    
+    text-decoration: underline;
+        }
+        .welcome{
+            position: absolute;
+    top: 61%;
+    left: 85%;
+        text-align: center;
+    FONT-SIZE: 33px;
+    font-style: oblique;
+    font-weight: 900;
+    
+    text-decoration: underline;
+        }
+        .name{
+            width: 22%;
+    text-align: center;
+    position: absolute;
+    top: 78%;
+    left: 78%;
+    FONT-SIZE: 25px;
+    font-style: oblique;
+    font-weight: 900;
+    
+    text-decoration: underline;
+        }
+        .user_name{
+
+                width: 6%;
+    height: 10%;
+    text-align: center;
+    position: absolute;
+    top: 67%;
+    left: 85%;
+    FONT-SIZE: 33px;
+    font-style: oblique;
+    font-weight: 900;
+    background-color:coral;
+    border-radius:50%;
+    cursor:pointer;
+        }
+        .ad1 {
+            width:85px !important;
+            height:100px !important;
+            background-color:orange;
+            position:absolute;
+            top:70%;
+            left:1%;
+        }
+        .ad2 {
+            width:85px !important;
+            height:100px !important;
+            background-color:orange;
+            position:absolute;
+            top:120%;
+            left:1%;
+        }
+        .slider1
+		{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.slider1 figure img
+		{
+			width:20%;
+			height:100%;
+			float:left;
+		}
+		.slider1 figure
+		{
+			position: relative;
+			width: 500%;
+			margin: 0px;
+			left: 0px;
+            height:100%;
+			animation: slide1 20s infinite linear;
+		}
+		@keyframes slide1
+		{
+            
+			0%{ left: 0%;}
+			15%{ left: 0%;}
+			25%{ left: -100%;}
+			35%{ left: -100%;}
+			45%{ left: -200%;}
+			55%{ left: -200%;}
+			65%{ left: -300%;}
+			75%{ left: -300%;}
+			85%{ left: -400%;}
+			100%{ left: -400%;}
+		}
+        .slider2
+		{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.slider2 figure img
+		{
+			width:20%;
+			height:100%;
+			float:right;
+		}
+		.slider2 figure
+		{
+			position: relative;
+			width: 500%;
+			margin: 0px;
+			left: 0px;
+            height:100%;
+			animation: slide2 20s infinite linear;
+		}
+		@keyframes slide2
+		{
+			100%{ left: 0%;}
+			85%{ left: 0%;}
+			75%{ left: -100%;}
+			65%{ left: -100%;}
+			55%{ left: -200%;}
+			45%{ left: -200%;}
+			35%{ left: -300%;}
+			25%{ left: -300%;}
+			15%{ left: -400%;}
+			0%{ left: -400%;}
+		}
+        .donarlist{
+            top: 140%;
+    left: 83%;
+    height: 197px;
+    width: 200px;
+   background-color:transparent;
+    animation: marquee linear infinite;
+    position: absolute;
+        } 
+        
+        .tdcd{
+            width:20px;
+            background-color:burlywood;
+        }
+        .Donor
+        {
+                position: absolute;
+    top: 133%;
+    left: 82%;
+    font-size: 30px;
+    font-style: oblique;
+    font-weight: bold;
+    text-decoration: underline;
+        }
+        
+        .btnStickC                                    
+        { position: absolute;
+    top: 1237px;
+    left: 14px;
+    padding: 15px;
+    width: 80px;
+    height: 80px;
+    border: solid;
+    border-radius: 40%;
+    border-color: #a94106;
+    background-color: blanchedalmond;
+        }
+        .btnStickF {
+                position: absolute;
+    top: 1371px;
+    left: 14px;
+    padding: 15px;
+    width: 80px;
+    height: 80px;
+    border: solid;
+    border-radius: 40%;
+    border-color: #a94106;
+    background-color: blanchedalmond;
+        }
+        .stickypos{
+            position:absolute;
+            top:1%;
+            left:1%;
+            width:100%;
+            height:806px;
+
+        }
+        .occtb{
+             top: 98%;
+             left: 81%;
+             position: absolute;
+        }
+      
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+        <div>
+
+            <table id="table" class="auto-style1">
+                <tr>
+                    <td class="auto-style2" colspan="3">
+
+                        <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/logo2.JPG" CssClass="auto-style12" />
+                        <div class="auto-style13">  
+                        <div class="slider1">		
+			<figure>
+				<img src="data2/images/temp1.jpg" style="height:100%"/>
+				<img src="data2/images/temp3.jpg" style="height:100%"/>
+				<img src="data2/images/temp4.jpg" style="height:100%"/>				
+				<img src="data2/images/temp5.jpg" style="height:100%"/>
+				<img src="data2/images/temp6.jpg" style="height:100%" />
+				<img src="data2/images/temple1.jpg" style="height:100%"/>
+			</figure>
+        </div></div>  
+                           
+                           <div class="auto-style14">  
+                        <div class="slider2">		
+			<figure>
+				<img src="data:image/jpeg;base64,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" style="height:100%"/>
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD_4KjY67Ie19kOddLhyQiQ9GnVF9iOGW3xQ&usqp=CAU" style="height:100%"/>
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0cYLBPAxk5FhfWR8q0Nu1w4YBjKlbsjPMbQ&usqp=CAU" style="height:100%"/>				
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCrevDaUYpj3GFWj9ZrPMucuhnoizcZqqnHw&usqp=CAU" style="height:100%"/>
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHMP1_632FDxN7tAEpancxJs0c7-bo0ShfdQ&usqp=CAU" style="height:100%" />
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTyd46ZbkNJXwCkGNtpF_6jI3mzNmzi_iswQ&usqp=CAU" style="height:100%"/>
+			</figure>
+        </div></div>      
+                       
+                          
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3" colspan="3">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Menu_left.png" CssClass="auto-style10" ClientIDMode="Static" />
+                        
+                            <div class="nav">
+                            <asp:Button ID="Button1" runat="server" Text="HOME" class="navigation1" OnClick="Button1_Click" CausesValidation="False" Font-Bold="True" />
+                            <asp:Button ID="Button2" runat="server" Text="TEMPLE" class="navigation1" OnClick="Button2_Click" CausesValidation="False" Font-Bold="True"/>
+                            <asp:Button ID="Button3" runat="server" Text="NGO" class="navigation1" OnClick="Button3_Click" CausesValidation="False" Font-Bold="True" />
+                            <asp:Button ID="Button4" runat="server"  Text="LOCATION" class="navigation2"  CausesValidation="False" OnClick="Button4_Click" Font-Bold="True" />
+                            <asp:Button ID="Button6" runat="server"   Text="ABOUT US " class="navigation2" CausesValidation="False" OnClick="Button6_Click" Font-Bold="True" />
+                            <asp:Button ID="Button7" runat="server" class="login" Text="Login"  OnClick="Button7_Click" OnClientClick="alert_meth()" CausesValidation="False" />
+                            <asp:Button ID="Button5" runat="server"  Text="DONATION" class="navigation2"  OnClick="Button5_Click" CausesValidation="False" Font-Bold="True" />
+                            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/Menu_top.png" CssClass="auto-style11" />
+
+                            </div>
+
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style7">
+                        <div class="ad1">
+
+                            <asp:AdRotator ID="AdRotator1" runat="server" AdvertisementFile="~/XMLFile1.xml" />
+
+                        </div>
+                         <div class="ad2">
+
+
+                             <asp:AdRotator ID="AdRotator2" runat="server" AdvertisementFile="~/XMLFile2.xml" />
+
+
+                        </div>
+
+                    </td>
+                    <td class="auto-style8">
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+
+                    </td>
+                    <td class="auto-style4"> 
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label10" CssClass="welcome" runat="server" Visible="False"></asp:Label>
+                                    <asp:Label ID="Label11" CssClass="joinus" runat="server" Text="Join Us "></asp:Label>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                    <asp:Button ID="Button8" CssClass="user_name" runat="server" CausesValidation="False" Text="Button" Visible="False" OnClick="Button8_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label12" runat="server" CssClass="name" Visible="False"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:TextBox ID="TextBox2" runat="server" Style="position: absolute; text-align: center; left: 81%; top: 84%; height: 30px; width: 224px;" CssClass="txttoday"></asp:TextBox>
+                                 </td> 
+                                </tr><tr>
+                                <td><asp:TextBox ID="TextBox3" runat="server" Style="position: absolute; text-align: center; left: 81%; top: 91%; height: 30px; width: 224px;" CssClass="txttoday"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr class="occtb">
+                                <td >
+                                    <asp:ListView ID="ListView1" runat="server">
+
+                                        <AlternatingItemTemplate>
+                                            <tr style="background-color: #FFFFFF; color: #284775;">
+                                                <td class="td">
+                                                    <asp:Label ID="Occ_Date" runat="server" Text='<%# Eval("date") %>' />
+                                                </td>
+                                                <td class="td">
+                                                    <asp:Label ID="Occ_name" runat="server" Text='<%# Eval("occassion") %>' />
+                                                </td>
+
+                                            </tr>
+                                        </AlternatingItemTemplate>
+                                        <EmptyDataTemplate>
+                                            <center>
+                                                <table runat="server">
+                                                    <tr>
+                                                        <td>Data Unavailable</td>
+                                                    </tr>
+                                                </table>
+                                            </center>
+                                        </EmptyDataTemplate>
+                                        <ItemTemplate>
+                                            <tr>
+
+                                                <td class="td">
+                                                    <asp:Label ID="Occ_Date" runat="server" Text='<%# Eval("date") %>' />
+                                                </td>
+                                                <td class="td">
+                                                    <asp:Label ID="Occ_name" runat="server" Text='<%# Eval("occassion") %>' />
+                                                </td>
+
+                                            </tr>
+                                        </ItemTemplate>
+                                        <LayoutTemplate>
+                                            <center>
+                                                <table runat="server" class="tbl" style="width: 15%">
+                                                    <tr runat="server">
+                                                        <td class="tdc" runat="server" style="border: none;">
+                                                            <table id="itemPlaceholderContainer" runat="server" border="0">
+                                                                <tr class="trc" runat="server" style="">
+                                                                    <th class="thc" runat="server">DATE</th>
+                                                                    <th class="thc" runat="server">OCCASSION</th>
+
+                                                                </tr>
+                                                                <tr class="trc" id="itemPlaceholder" runat="server">
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </center>
+                                        </LayoutTemplate>
+
+                                    </asp:ListView>
+
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label8" CssClass="Donor" runat="server" Text="The Contributers"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <caption>
+                                    <marquee class="donarlist" direction="up" loop="" onmouseout="this.start();" onmouseover="this.stop();" scrollmount="-7">
+                                        <asp:ListView ID="ListView2" runat="server">
+                                            <alternatingitemtemplate>
+                                                <tr style="background-color: #FFFFFF; color: #284775;">
+                                                    <td class="td">
+                                                        <asp:Label ID="Dname" runat="server" Text='<%# Eval("user_name") %>' />
+                                                    </td>
+                                                    <td class="td">
+                                                        <asp:Label ID="amount" runat="server" Text='<%# Eval("amount") %>' />
+                                                    </td>
+                                                </tr>
+                                            </alternatingitemtemplate>
+                                            <emptydatatemplate>
+                                                <center>
+                                                    <table runat="server">
+                                                        <tr>
+                                                            <td>Data Unavailable</td>
+                                                        </tr>
+                                                    </table>
+                                                </center>
+                                            </emptydatatemplate>
+                                            <itemtemplate>
+                                                <tr>
+                                                    <td class="td">
+                                                        <asp:Label ID="Donor" runat="server" Text='<%# Eval("user_name") %>' />
+                                                    </td>
+                                                    <td class="td">
+                                                        <asp:Label ID="amount" runat="server" Text='<%# Eval("amount") %>' />
+                                                    </td>
+                                                </tr>
+                                            </itemtemplate>
+                                            <layouttemplate>
+                                                <center>
+                                                    <table runat="server" class="tbl" style="width: 15%">
+                                                        <tr runat="server">
+                                                            <td runat="server" class="tdcd" style="border: none;">
+                                                                <table id="itemPlaceholderContainer" runat="server" border="0" style="width: 200px;">
+                                                                    <tr id="itemPlaceholder" runat="server" class="trcd">
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </center>
+                                            </layouttemplate>
+                                        </asp:ListView>
+                                    </marquee></caption>
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style9" colspan="3">
+                        <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Names="Britannic Bold" Font-Size="x-large" ForeColor="Black" Style="position: absolute; left: 37%; top: 175%;" Text="CONTACT US "></asp:Label>
+                        <asp:Image ID="Image7" runat="server" Style="position: absolute; top: 172.4%; left: 57px" BorderColor="White" BorderStyle="None" Height="200px" ImageUrl="~/Images/curved logo1.png" />
+                        <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Names="Britannic Bold" Font-Size="large" ForeColor="#333333" Style="position: absolute; left: 36%; top: 184%;" Text="Phone (Ph. )    :  99XXXXXX54"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="E-mail  :  divyadarshankalp@gmail.com" Font-Bold="True" Font-Names="Britannic Bold" Font-Size="Large" ForeColor="#333333" Style="position: absolute; left: 36%; top: 193%"></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Names="Britannic Bold" Font-Size="large" Text="99XXXXXX82" Style="position: absolute; left: 43.2%; top: 188%;" ForeColor="#333333"></asp:Label>
+                        <asp:Label ID="Label6" runat="server" CssClass="auto-style23" Font-Bold="True" Font-Names="Britannic Bold" Font-Size="x-large" ForeColor="Black" Text="FOLLOW US " Style="position: absolute; left:75%; top:175%;" Font-Italic="False"></asp:Label>
+                        <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="https://www.freeiconspng.com/thumbs/youtube-logo-png/hd-youtube-logo-png-transparent-background-20.png" Style="position: absolute;left: 64%;top: 182%;height: 98px;width: 86px;" />
+                        <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="http://assets.stickpng.com/thumbs/584ac2d03ac3a570f94a666d.png" Style="position:absolute; left : 74%;top: 184%;height: 63px;width: 64px;" />
+                        <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="https://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png" Style="position: absolute; left: 82%;top: 183%; height: 75px; width: 75px;" />
+                        <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png" Style="position: absolute;left: 90%;top: 183%; height: 75px; width: 75px;" />
+
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="auto-style6" colspan="3">
+                        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Italic="True" Font-Names="Times New Roman" Font-Size="XX-Large" Font-Underline="True" Text="Copyright &copy 2022 KALP Developers"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+ 
+     
+           
+ 
+                   
+            <asp:ImageButton  ID="btnC" CssClass="btnStickC" runat="server" ImageUrl="Images/question1.png" CausesValidation="false" OnClick="btnC_Click"/><br />
+            <asp:ImageButton ID="btnF"  CssClass="btnStickF" runat="server" ImageUrl="Images/feedback1.png" CausesValidation="false" OnClick="btnF_Click"/>
+    
+
+        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+      </form>     
+    
+       
+        
+
+    
+</body>
+</html>
